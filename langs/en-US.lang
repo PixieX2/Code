@@ -1,0 +1,17 @@
+!lang 1.0
+language = English (US)
+
+
+# --- Blocks ---
+grass = Grass
+stone = Stone
+wood  = Dirt
+
+# --- UI ---
+inventory = Inventory
+selected = Selected Block
+place = Place Block
+break = Break Block
+jump = Jump
+move_left = Move Left
+move_right = Move Right

@@ -34,7 +34,7 @@ font = pygame.font.SysFont(None,24)
 
 # --- Blocks ---
 block_colors = {1:(0,255,0), 2:(128,128,128), 3:(139,69,19)}
-block_names = {1:lang.get("grass"), 2:lang.get("stone"), 3:lang.get("wood")}
+block_names = {1:lang.get("grass"), 2:lang.get("stone"), 3:lang.get("dirt")}
 inventory_slots = [1,2,3]
 selected_slot = 0
 
@@ -56,7 +56,7 @@ def generate_column(x):
     col = {}
     for y in range(height+1):
         if y==height: col[y] = 1  # grass
-        elif y > height-3: col[y] = 3  # wood
+        elif y > height-3: col[y] = 3  # dirt
         else: col[y] = 2  # stone
     return col
 

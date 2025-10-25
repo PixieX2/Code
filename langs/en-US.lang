@@ -5,7 +5,7 @@ language = English (US)
 # --- Blocks ---
 grass = Grass
 stone = Stone
-wood  = Dirt
+dirt  = Dirt
 
 # --- UI ---
 inventory = Inventory

@@ -1,11 +1,21 @@
-# -*- mode: python ; coding: utf-8 -*-
+import os
 
+BASE_DIR = os.getcwd()  # current folder, safe for PyInstaller spec
+LANGS_DIR = os.path.join(BASE_DIR, 'langs')
+
+lang_files = []
+for root, dirs, files in os.walk(LANGS_DIR):
+    for f in files:
+        if f.endswith('.lang'):
+            src = os.path.join(root, f)
+            rel_path = os.path.relpath(root, BASE_DIR)
+            lang_files.append((src, rel_path))
 
 a = Analysis(
     ['sharp.py'],
     pathex=[],
     binaries=[],
-    datas=[('langs/*.lang', 'langs')],
+    datas=lang_files,
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -19,20 +29,10 @@ pyz = PYZ(a.pure)
 exe = EXE(
     pyz,
     a.scripts,
-    a.binaries,
-    a.datas,
-    [],
+    a.binaries + a.datas,
     name='sharp',
     debug=False,
-    bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    upx_exclude=[],
-    runtime_tmpdir=None,
-    console=True,
-    disable_windowed_traceback=False,
-    argv_emulation=False,
-    target_arch=None,
-    codesign_identity=None,
-    entitlements_file=None,
+    console=False
 )
